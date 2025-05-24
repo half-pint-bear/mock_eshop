@@ -1,7 +1,14 @@
+import styles from './styles/HomePage.module.css'
+import useHomeData from "./hooks/useHomeData.jsx";
+import CategoryGrid from "./components/CategoryGrid.jsx";
+
 export default function HomePage() {
+    const {categories, newProducts, error, loading } = useHomeData();
+
     return (
-        <div className='home-page'>
+        <main className={styles.container}>
             <h1 className='home-page-title'>Home</h1>
-        </div>
+            <CategoryGrid categories={categories} />
+        </main>
     )
 }

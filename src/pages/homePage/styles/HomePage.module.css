@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.carousel {
+    flex: 1 1 50%;
+    display: flex;
+    overflow-x: auto;
+}
+
+.carouselItem {
+    min-width: 200px;
+    margin-right: 1rem;
+}
+
+.categoryGrid {
+    flex: 1 1 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.categoryCard {
+    background-color: #f5f5f5;
+    padding: 1rem;
+    text-align: center;
+}
