@@ -15,7 +15,7 @@ export default function useHomeData() {
                     apiClientGet("/products"),
                 ]);
                 setCategories(arbitraryCategorySelection(catRes.data));
-                setNewsProducts(newRes);
+                setNewsProducts(newRes.data.products);
             } catch (error) {
                 setError(error);
             } finally {

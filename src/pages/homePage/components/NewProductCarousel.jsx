@@ -1,0 +1,36 @@
+import React, { useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import styles from "../styles/NewProductCarousel.module.css";
+
+export default function NewProductCarousel({ products = [] }) {
+    // Embedded Embla hook
+    const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+    const scrollPrev = useCallback(() => {
+        if (emblaApi) emblaApi.scrollPrev();
+    }, [emblaApi]);
+
+    const scrollNext = useCallback(() => {
+        if (emblaApi) emblaApi.scrollNext();
+    }, [emblaApi]);
+
+    return (
+        <div className={styles.embla}>
+            <div className={styles.embla__viewport} ref={emblaRef}>
+                <div className={styles.embla__container}>
+                    {products.map((product) => (
+                        <div className={styles.embla__slide} key={product.id}>
+                            <div className={styles.productCard}>
+                                <img src={product.thumbnail} alt={product.title} />
+                                <h3>{product.title}</h3>
+                                <p>{product.price} €</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <button onClick={scrollPrev} className="embla__button embla__button--prev">‹</button>
+            <button onClick={scrollNext} className="embla__button embla__button--next">›</button>
+        </div>
+    );
+}
