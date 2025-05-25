@@ -29,8 +29,8 @@ export default function NewProductCarousel({ products = [] }) {
                     ))}
                 </div>
             </div>
-            <button onClick={scrollPrev} className="embla__button embla__button--prev">‹</button>
-            <button onClick={scrollNext} className="embla__button embla__button--next">›</button>
+            <button onClick={scrollPrev} className={`${styles.embla__button} ${styles.embla__buttonPrev}`}>‹</button>
+            <button onClick={scrollNext} className={`${styles.embla__button} ${styles.embla__buttonNext}`}>›</button>`
         </div>
     );
 }

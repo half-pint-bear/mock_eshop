@@ -31,5 +31,6 @@ export default function useHomeData() {
 
         return categories.filter(category => slugs.includes(category.slug));
     }
+
     return {categories, newProducts, error, loading};
 }

@@ -7,10 +7,16 @@ export default function HomePage() {
     const {categories, newProducts, error, loading } = useHomeData();
 
     return (
-        <main className={styles.container}>
+        <div className={styles.container}>
             <h1 className='home-page-title'>Home</h1>
-            <NewProductCarousel products={newProducts} />
-            <CategoryGrid categories={categories} />
-        </main>
+            <div className={styles.row}>
+                <div className={styles.carousel}>
+                    <NewProductCarousel products={newProducts} />
+                </div>
+                <div className={styles.categoryGrid}>
+                    <CategoryGrid categories={categories} />
+                </div>
+            </div>
+        </div>
     )
 }
