@@ -3,19 +3,19 @@ import {apiClientGet} from "../../../services/apiClient.jsx";
 
 export default function useHomeData() {
     const [categories, setCategories] = useState([]);
-    const [newProducts, setNewsProducts] = useState([]);
+    const [topProducts, setTopProducts] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [catRes, newRes] = await Promise.all([
+                const [catRes, topRes] = await Promise.all([
                     apiClientGet("/products/categories"),
-                    apiClientGet("/products"),
+                    getTopProducts()
                 ]);
                 setCategories(arbitraryCategorySelection(catRes.data));
-                setNewsProducts(newRes.data.products);
+                setTopProducts(topRes);
             } catch (error) {
                 setError(error);
             } finally {
@@ -32,5 +32,34 @@ export default function useHomeData() {
         return categories.filter(category => slugs.includes(category.slug));
     }
 
-    return {categories, newProducts, error, loading};
+    async function getTopProducts() {
+        const targetedCats = ["mens-watches", "womens-watches", "smartphones"];
+        const filteredProducts = [];
+
+        for (const cat of targetedCats) {
+            const products = await apiClientGet("/products/category/" + cat);
+
+            products.data.products.forEach(product => {
+                const reviews = product.reviews;
+                let ratings = [];
+                reviews.forEach(review => {
+                    ratings.push(review.rating);
+                })
+                let avg =  0;
+                ratings.forEach(rating => {
+                    avg += rating;
+                });
+
+                if(avg >= 4.5) {
+                    filteredProducts.push(product);
+                }
+            })
+        }
+        return filteredProducts.sort(() => {
+                return 0.5 - Math.random();
+            }
+        );
+    }
+
+    return {categories, newProducts: topProducts, error, loading};
 }
