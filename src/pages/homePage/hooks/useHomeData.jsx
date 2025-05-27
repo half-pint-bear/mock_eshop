@@ -27,7 +27,7 @@ export default function useHomeData() {
     }, []);
 
     function arbitraryCategorySelection (categories)  {
-        const slugs = ['vehicle', 'laptops', 'sports-accessories', 'home-decoration'];
+        const slugs = ['womens-dresses','vehicle', 'laptops', 'sports-accessories', 'home-decoration'];
 
         return categories.filter(category => slugs.includes(category.slug));
     }

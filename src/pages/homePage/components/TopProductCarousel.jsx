@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import styles from "../styles/NewProductCarousel.module.css";
+import styles from "../styles/TopProductCarousel.module.css";
 
-export default function NewProductCarousel({ products = [] }) {
+export default function TopProductCarousel({ products = [] }) {
     // Embedded Embla hook
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
