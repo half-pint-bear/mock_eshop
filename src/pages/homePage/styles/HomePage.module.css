@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
 .row {
     display: flex;
     gap: 2rem;
@@ -28,24 +29,32 @@
     align-items: center;
     justify-content: center;
     min-height: 150px;
+    background-size: cover;
+    font-family: "Cookie", cursive;
+
 }
 
 .categoryCard:nth-child(1) {
     grid-area: card1;
+    background-image: url(../../../assets/category-1.jpg);
 }
 
 .categoryCard:nth-child(2) {
     grid-area: card2;
+    background-image: url(../../../assets/category-2.jpg);
 }
 
 .categoryCard:nth-child(3) {
     grid-area: card3;
+    background-image: url(../../../assets/category-3.jpg);
 }
 
 .categoryCard:nth-child(4) {
     grid-area: card4;
+    background-image: url(../../../assets/category-4.jpg);
 }
 
 .categoryCard:nth-child(5) {
     grid-area: card5;
+    background-image: url(../../../assets/category-5.jpg);
 }
