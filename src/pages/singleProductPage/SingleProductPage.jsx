@@ -1,3 +1,16 @@
+import {useParams} from "react-router-dom";
+import useProductById from "./hooks/useProductById.jsx";
+import Loader from "../../shared/loader/Loader.jsx";
+
+
 export default function SingleProductPage() {
-    return (<h1>Prout</h1>)
+    const {id} = useParams();
+    const {product} = useProductById(id);
+
+    if (!product) {
+        return <Loader />;
+    }
+    return (<div>
+        <h1>{product.title}</h1>
+    </div>)
 }

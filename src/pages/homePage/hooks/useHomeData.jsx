@@ -14,8 +14,9 @@ export default function useHomeData() {
                     apiClientGet("/products/categories"),
                     getTopProducts()
                 ]);
-                setCategories(await arbitraryCategorySelection(catRes.data));
+                setCategories(arbitraryCategorySelection(catRes.data));
                 setTopProducts(topRes);
+                setLoading(false);
             } catch (error) {
                 setError(error);
             } finally {
