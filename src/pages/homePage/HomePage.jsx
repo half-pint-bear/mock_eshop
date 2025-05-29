@@ -5,7 +5,7 @@ import TopProductCarousel from "./components/TopProductCarousel.jsx";
 import Loader from "../../shared/loader/Loader.jsx";
 
 export default function HomePage() {
-    const {categories, newProducts, error, loading } = useHomeData();
+    const {categories, topProducts, error, loading } = useHomeData();
 
     if (loading) {
         return (
@@ -14,15 +14,15 @@ export default function HomePage() {
     }
     return (
         <div className={styles.container}>
-            <h1 className='home-page-title'>Home</h1>
+            <h1 className={styles.homePageTitle}>Home</h1>
             <div className={styles.row}>
                 <div className={styles.categoryGrid}>
                     <CategoryGrid categories={categories} />
                 </div>
             </div>
             <div className={styles.carousel}>
-                <h2>Top sales</h2>
-                <TopProductCarousel products={newProducts} />
+                <h2 className={styles.topSalesTitle}>Top sales</h2>
+                <TopProductCarousel products={topProducts} />
             </div>
         </div>
     )

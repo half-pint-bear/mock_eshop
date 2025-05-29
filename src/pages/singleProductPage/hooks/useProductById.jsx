@@ -7,9 +7,12 @@ export default function useProductById(id){
 
     useEffect(() => {
         try {
-            const res = apiClientGet(`/products/${id}`);
-            setProduct(res.data)
-            setLoading(false);
+            setLoading(true); // au cas où id changerait
+            apiClientGet(`/products/${id}`)
+                .then(res => {
+                    setProduct(res.data);
+                    setLoading(false);
+                })
         }catch(error){
             console.error(error);
         }

@@ -1,11 +1,12 @@
-
-
 .row {
     display: flex;
     gap: 2rem;
     align-items: stretch;
 }
 
+.homePageTitle, .topSalesTitle {
+    text-align: center;
+}
 .carousel,
 .categoryGrid {
     flex: 1 1 50%;

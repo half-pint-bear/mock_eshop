@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
-import styles from "../buttons/ShowMoreBtn.module.css"
 
-export default function ShowMoreBtn({to, children}) {
+export default function Button({className, to, children}) {
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -11,7 +10,7 @@ export default function ShowMoreBtn({to, children}) {
 
     return (
         <>
-            <a className={styles.showMoreBtn} onClick={handleClick}>{children}</a>
+            <a className={className} onClick={handleClick}>{children}</a>
         </>
     )
 }

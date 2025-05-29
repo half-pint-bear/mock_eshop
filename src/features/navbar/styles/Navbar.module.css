@@ -65,6 +65,11 @@
     gap: 1rem;
 }
 
+.iconButton {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
 .searchIcon {
     display: none;
     background: none;

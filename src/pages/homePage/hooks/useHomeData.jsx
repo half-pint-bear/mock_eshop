@@ -70,5 +70,5 @@ export default function useHomeData() {
         return filteredProducts.sort(() => Math.random() - 0.5);
     }
 
-    return {categories, newProducts: topProducts, error, loading};
+    return {categories, topProducts, error, loading};
 }

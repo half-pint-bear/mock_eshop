@@ -1,4 +1,3 @@
-// features/navbar/components/AccountIcon.jsx
 import React from 'react';
 import { User } from 'lucide-react';
 import styles from '../styles/Navbar.module.css';

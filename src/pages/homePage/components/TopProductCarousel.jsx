@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "../styles/TopProductCarousel.module.css";
-import ShowMoreBtn from "../../../shared/buttons/ShowMoreBtn.jsx";
+import btnStyles from '../../../shared/buttons/Button.module.css'
+import Button from "../../../shared/buttons/Button.jsx";
 
 export default function TopProductCarousel({ products = [] }) {
     // Embedded Embla hook
@@ -25,7 +26,7 @@ export default function TopProductCarousel({ products = [] }) {
                                 <img src={product.thumbnail} alt={product.title} />
                                 <h3>{product.title}</h3>
                                 <p>{product.price} €</p>
-                                <ShowMoreBtn to={`/products/${product.id}`}>Buy now</ShowMoreBtn>
+                                <Button className={btnStyles.detailsBtn} to={`/products/${product.id}`}>Détails</Button>
                             </div>
                         </div>
                     ))}

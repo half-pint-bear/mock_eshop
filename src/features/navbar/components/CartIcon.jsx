@@ -1,4 +1,3 @@
-// features/navbar/components/CartIcon.jsx
 import React from 'react';
 import { ShoppingCart } from 'lucide-react';
 import styles from '../styles/Navbar.module.css';
