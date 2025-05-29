@@ -4,6 +4,7 @@
     text-decoration: none;
     background-color: transparent;
     font-family: var(--font-secondary);
+    color: black;
 }
 
 .showMoreBtn:after {
