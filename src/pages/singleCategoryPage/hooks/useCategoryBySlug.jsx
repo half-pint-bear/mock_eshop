@@ -3,15 +3,16 @@ import {apiClientGet} from "../../../services/apiClient.jsx";
 
 export default function useCategoryBySlug(slug) {
     const [products, setProducts] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         try {
-            apiClientGet(`/products/category/${slug}`)
-                .then(res => setProducts(res.data.products))
+            const res = apiClientGet(`/products/category/${slug}`);
+            setProducts(res.data.products);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     }, [slug]);
 
-    return {products};
+    return {products, loading};
 }

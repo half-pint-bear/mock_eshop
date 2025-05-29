@@ -1,0 +1,17 @@
+.showMoreBtn {
+    position: relative;
+    margin-left: 1rem;
+    text-decoration: none;
+    background-color: transparent;
+    font-family: var(--font-secondary);
+}
+
+.showMoreBtn:after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #ca1515;
+    content: "";
+}

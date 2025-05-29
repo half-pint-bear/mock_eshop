@@ -3,19 +3,17 @@ import {apiClientGet} from "../../../services/apiClient.jsx";
 
 export default function useProductById(id){
     const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         try {
-            apiClientGet(`/products/${id}`)
-                .then((response) => {
-                    console.log(response.data);
-                    setProduct(response.data)
-                });
+            const res = apiClientGet(`/products/${id}`);
+            setProduct(res.data)
+            setLoading(false);
         }catch(error){
             console.error(error);
         }
     }, [id])
 
-    return {product};
+    return {product, loading};
 }
