@@ -1,6 +1,6 @@
 import styles from '../styles/CategoryCard.module.css'
-import styles2 from '../../../shared/buttons/Button.module.css'
-import Button from "../../../shared/buttons/Button.jsx";
+import styles2 from '../../../shared/components/buttons/Button.module.css'
+import Button from "../../../shared/components/buttons/Button.jsx";
 
 export default function CategoryCard({category}) {
     return (

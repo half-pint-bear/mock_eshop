@@ -5,7 +5,7 @@ import useSearchBar from "../hooks/useSearchBar.jsx";
 export default function SearchBar() {
     const [query, setQuery] = useState('');
     const {results, loading} = useSearchBar(query);
-    console.log(results);
+
     return (
         <div className={styles.searchContainer}>
             <input

@@ -1,0 +1,23 @@
+.starRating {
+    display: flex;
+    gap: 2px;
+}
+
+.star {
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.starFull {
+    color: gold;
+}
+
+.starHalf {
+    background: linear-gradient(to right, gold 50%, #ccc 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.starEmpty {
+    color: #ccc;
+}

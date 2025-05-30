@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import useProductById from "./hooks/useProductById.jsx";
-import Loader from "../../shared/loader/Loader.jsx";
+import Loader from "../../shared/components/loader/Loader.jsx";
 
 
 export default function SingleProductPage() {

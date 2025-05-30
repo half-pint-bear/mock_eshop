@@ -1,8 +1,8 @@
 import React, { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styles from "../styles/TopProductCarousel.module.css";
-import btnStyles from '../../../shared/buttons/Button.module.css'
-import Button from "../../../shared/buttons/Button.jsx";
+import btnStyles from '../../../shared/components/buttons/Button.module.css'
+import Button from "../../../shared/components/buttons/Button.jsx";
 
 export default function TopProductCarousel({ products = [] }) {
     // Embedded Embla hook
