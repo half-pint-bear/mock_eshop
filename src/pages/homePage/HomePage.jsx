@@ -14,7 +14,6 @@ export default function HomePage() {
     }
     return (
         <div className={styles.container}>
-            <h1 className={styles.homePageTitle}>Home</h1>
             <div className={styles.row}>
                 <div className={styles.categoryGrid}>
                     <CategoryGrid categories={categories} />

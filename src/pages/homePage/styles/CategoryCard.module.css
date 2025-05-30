@@ -5,6 +5,8 @@
     align-items: flex-start;
     justify-content: center;
     min-height: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     font-family: var(--font-primary);
 }
