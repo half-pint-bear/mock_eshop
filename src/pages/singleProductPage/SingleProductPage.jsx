@@ -3,6 +3,10 @@ import { useState } from "react";
 import useProductById from "./hooks/useProductById";
 import Loader from "../../shared/components/loader/Loader.jsx";
 import styles from './styles/SingleProductPage.module.css';
+import btnStyles from '../../shared/components/buttons/Button.module.css'
+import StarRating from "../../shared/components/stars/StarRating.jsx";
+import Button from "../../shared/components/buttons/Button.jsx";
+import {useCart} from "../../contexts/CartContext.jsx";
 
 
 export default function SingleProductPage() {
@@ -11,6 +15,10 @@ export default function SingleProductPage() {
     const [mainImage, setMainImage] = useState(null);
     const [quantity, setQuantity] = useState(1);
 
+    const { addToCart } = useCart();
+    const handleAddToCart = () => {
+        addToCart(product, quantity); //Send product & quantity to context
+    }
     if (!product) return <Loader />;
 
     const handleDecrease = () => {
@@ -30,7 +38,7 @@ export default function SingleProductPage() {
                             key={i}
                             src={img}
                             alt={`mini-${i}`}
-                            className={styles.thumbImg}
+                            className={`${styles.thumbImg} ${mainImage === img ? styles.active : ''}`}
                             onClick={() => setMainImage(img)}
                         />
                     ))}
@@ -42,9 +50,7 @@ export default function SingleProductPage() {
             <div className={styles.productDetails}>
                 <h1>{product.title}</h1>
                 <p className={styles.brand}>{product.brand}</p>
-                <p className={styles.rating}>
-                    {product.rating} ★ ({product.reviews?.length ?? 0} reviews)
-                </p>
+                <div><StarRating rating={product.rating} /> ({product.reviews?.length ?? 0} reviews)</div>
                 <p className={styles.price}>${product.price}</p>
                 <p className={styles.description}>{product.description}</p>
 
@@ -54,7 +60,7 @@ export default function SingleProductPage() {
                         <span>{quantity}</span>
                         <button onClick={handleIncrease}>+</button>
                     </div>
-                    <button className={styles.addToCart}>Add to Cart</button>
+                    <Button className={btnStyles.detailsBtn} onClick={handleAddToCart}>Add to Cart</Button>
                 </div>
             </div>
         </div>

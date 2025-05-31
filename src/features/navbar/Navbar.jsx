@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
-import styles from '../styles/Navbar.module.css';
-import { useNavbar } from '../hooks/useNavbar.jsx';
-import NavLinks from "./NavLinks.jsx";
-import SearchBar from "./SearchBar.jsx";
-import CartIcon from "./CartIcon.jsx";
-import AccountIcon from "./AccountIcon.jsx";
+import styles from './styles/Navbar.module.css';
+import { useNavbar } from './hooks/useNavbar.jsx';
+import NavLinks from "./components/NavLinks.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import CartIcon from "./components/CartIcon.jsx";
+import AccountIcon from "./components/AccountIcon.jsx";
 
 export default function Navbar() {
     const { isOpen, toggleMenu, closeMenu } = useNavbar();
