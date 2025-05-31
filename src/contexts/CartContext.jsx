@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import {createContext, useContext, useEffect, useReducer} from "react";
 
 const CartContext = createContext();
 
@@ -43,14 +43,21 @@ const cartReducer = (state, action) => {
     }
 };
 
-// Cart initial state
-const initialState = {
-    items: [], // item : { id, title, price, quantity }
-};
+//Check if cart stored in localStorage
+const getInitialCart = () => {
+    const saved = localStorage.getItem("cart");
 
-// Context provider
+    return saved ? {items: JSON.parse(saved)} : {items: []};
+}
+
+// Context provider with lazy initializer (2nd arg : undefined)
 export function CartProvider({ children }) {
-    const [state, dispatch] = useReducer(cartReducer, initialState);
+    const [state, dispatch] = useReducer(cartReducer, undefined, getInitialCart);
+
+    // Localstorage update
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(state.items));
+    }, [state.items]);
 
     const addToCart = (product, quantity = 1) => {
         dispatch({
@@ -70,7 +77,13 @@ export function CartProvider({ children }) {
     const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
-        <CartContext.Provider value={{ cart: state.items, addToCart, removeFromCart, clearCart, totalItems }}>
+        <CartContext.Provider
+            value={{
+                cart: state.items,
+                addToCart,
+                removeFromCart,
+                clearCart,
+                totalItems }}>
             {children}
         </CartContext.Provider>
     );

@@ -7,6 +7,7 @@ import btnStyles from '../../shared/components/buttons/Button.module.css'
 import StarRating from "../../shared/components/stars/StarRating.jsx";
 import Button from "../../shared/components/buttons/Button.jsx";
 import {useCart} from "../../contexts/CartContext.jsx";
+import ProductDetails from "./components/ProductDetails.jsx";
 
 
 export default function SingleProductPage() {
@@ -30,39 +31,44 @@ export default function SingleProductPage() {
     };
 
     return (
-        <div className={styles.productPage}>
-            <div className={styles.productGallery}>
-                <div className={styles.productThumbnails}>
-                    {product.images.map((img, i) => (
-                        <img
-                            key={i}
-                            src={img}
-                            alt={`mini-${i}`}
-                            className={`${styles.thumbImg} ${mainImage === img ? styles.active : ''}`}
-                            onClick={() => setMainImage(img)}
-                        />
-                    ))}
-                </div>
-                <div className={styles.mainThumbnail}>
-                    <img src={mainImage || product.thumbnail} alt={product.title} />
-                </div>
-            </div>
-            <div className={styles.productDetails}>
-                <h1>{product.title}</h1>
-                <p className={styles.brand}>{product.brand}</p>
-                <div><StarRating rating={product.rating} /> ({product.reviews?.length ?? 0} reviews)</div>
-                <p className={styles.price}>${product.price}</p>
-                <p className={styles.description}>{product.description}</p>
-
-                <div className={styles.cartActions}>
-                    <div className={styles.quantitySelector}>
-                        <button onClick={handleDecrease}>−</button>
-                        <span>{quantity}</span>
-                        <button onClick={handleIncrease}>+</button>
+        <div>
+            <div className={styles.productPage}>
+                <div className={styles.productGallery}>
+                    <div className={styles.productThumbnails}>
+                        {product.images.map((img, i) => (
+                            <img
+                                key={i}
+                                src={img}
+                                alt={`mini-${i}`}
+                                className={`${styles.thumbImg} ${mainImage === img ? styles.active : ''}`}
+                                onClick={() => setMainImage(img)}
+                            />
+                        ))}
                     </div>
-                    <Button className={btnStyles.detailsBtn} onClick={handleAddToCart}>Add to Cart</Button>
+                    <div className={styles.mainThumbnail}>
+                        <img src={mainImage || product.thumbnail} alt={product.title} />
+                    </div>
+                </div>
+                <div className={styles.productInfos}>
+                    <h1>{product.title}</h1>
+                    <p className={styles.brand}>{product.brand}</p>
+                    <div><StarRating rating={product.rating} /> ({product.reviews?.length ?? 0} reviews)</div>
+                    <p className={styles.price}>${product.price}</p>
+                    <p className={styles.description}>{product.description}</p>
+
+                    <div className={styles.cartActions}>
+                        <div className={styles.quantitySelector}>
+                            <button onClick={handleDecrease}>−</button>
+                            <span>{quantity}</span>
+                            <button onClick={handleIncrease}>+</button>
+                        </div>
+                        <Button className={btnStyles.detailsBtn} onClick={handleAddToCart}>Add to Cart</Button>
+                    </div>
                 </div>
             </div>
+            <ProductDetails reviews={product.reviews}
+                product={product}
+            />
         </div>
     );
 }
