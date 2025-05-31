@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {apiClientGet} from "../../../services/apiClient.jsx";
 import useCategories from "../../singleProductPage/hooks/useCategories.jsx";
 
@@ -15,7 +15,7 @@ export default function useCategoryBySlug(slug) {
                 setLoading(true);
                 const res = await apiClientGet(`/products/category/${slug}`);
                 setProducts(res.data.products);
-                //setCategory(getCatBySlug(slug));
+
             } catch (error) {
                 console.error(error);
             } finally {
