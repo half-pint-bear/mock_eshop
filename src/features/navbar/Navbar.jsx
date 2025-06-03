@@ -5,8 +5,8 @@ import styles from './styles/Navbar.module.css';
 import { useNavbar } from './hooks/useNavbar.jsx';
 import NavLinks from "./components/NavLinks.jsx";
 import SearchBar from "./components/SearchBar.jsx";
-import CartIcon from "./components/CartIcon.jsx";
 import AccountIcon from "./components/AccountIcon.jsx";
+import CartPreview from "./components/CartPreview.jsx";
 
 export default function Navbar() {
     const { isOpen, toggleMenu, closeMenu } = useNavbar();
@@ -40,7 +40,8 @@ export default function Navbar() {
                 <button className={styles.searchIcon} onClick={() => setShowSearch(true)}>
                     <Search size={20} />
                 </button>
-                <CartIcon />
+
+                <CartPreview />
                 <AccountIcon />
             </div>
 

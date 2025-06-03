@@ -2,14 +2,14 @@
     display: flex;
     gap: 2rem;
     align-items: stretch;
-    height: calc(100vh - 80px);
+    height: 100vh;
 }
 
 .homePageTitle, .topSalesTitle {
     text-align: center;
 }
-.carousel,
-.categoryGrid {
+
+.carousel, .categoryGrid {
     flex: 1 1 50%;
     min-width: 400px;
 }

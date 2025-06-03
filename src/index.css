@@ -6,6 +6,9 @@
     --font-secondary: 'Montserrat', sans-serif;
 }
 
+.main {
+    padding-top: 80px;
+}
 body {
     margin: 0;
     padding: 0;

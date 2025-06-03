@@ -6,7 +6,8 @@
     padding: 1rem 2rem;
     background-color: #222;
     color: white;
-    position: relative;
+    position: fixed;
+    width: 100%;
 }
 
 .leftSection {
