@@ -14,11 +14,11 @@ export default function HomePage() {
     }
     return (
         <div className={styles.container}>
-            <div className={styles.row}>
-                <div className={styles.categoryGrid}>
+
+                <div>
                     <CategoryGrid categories={categories} />
                 </div>
-            </div>
+
             <div className={styles.carousel}>
                 <h2 className={styles.topSalesTitle}>Top sales</h2>
                 <TopProductCarousel products={topProducts} />

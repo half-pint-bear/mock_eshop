@@ -1,7 +1,4 @@
 .row {
-    display: flex;
-    gap: 2rem;
-    align-items: stretch;
     height: 100vh;
 }
 
@@ -16,10 +13,12 @@
 
 .categoryGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
         "card1 card1 card2 card3"
         "card1 card1 card4 card5";
-    gap: 0.2rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
     width: 100%;
+    min-height: 80vh;
 }

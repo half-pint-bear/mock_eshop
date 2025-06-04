@@ -1,39 +1,28 @@
 .categoryCard {
-    background: #f5f5f5;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    min-height: 150px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    align-items: flex-end;
+    justify-content: flex-start;
+    overflow: hidden;
     font-family: var(--font-primary);
+    height: 100%;
+    width: 100%;
+
+}
+.categoryImage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
 }
 
-.categoryCard:nth-child(1) {
-    grid-area: card1;
-    background-image: url(../../../assets/category-1.jpg);
-}
-
-.categoryCard:nth-child(2) {
-    grid-area: card2;
-    background-image: url(../../../assets/category-2.jpg);
-}
-
-.categoryCard:nth-child(3) {
-    grid-area: card3;
-    background-image: url(../../../assets/category-3.jpg);
-}
-
-.categoryCard:nth-child(4) {
-    grid-area: card4;
-    background-image: url(../../../assets/category-4.jpg);
-}
-
-.categoryCard:nth-child(5) {
-    grid-area: card5;
-    background-image: url(../../../assets/category-5.jpg);
+.categoryContent {
+    position: relative;
+    padding: 1rem;
+    color: black;
+    width: 100%;
 }
 
 .categoryTitle {
@@ -42,4 +31,23 @@
 
 .categoryCard:nth-child(1) .categoryTitle {
     font-size: 3rem;
+}
+.card1 {
+    grid-area: card1;
+}
+
+.card2 {
+    grid-area: card2;
+}
+
+.card3 {
+    grid-area: card3;
+}
+
+.card4 {
+    grid-area: card4;
+}
+
+.card5 {
+    grid-area: card5;
 }

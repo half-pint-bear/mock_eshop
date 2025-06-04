@@ -3,12 +3,17 @@ import styles from '../styles/HomePage.module.css';
 import CategoryCard from './CategoryCard';
 
 export default function CategoryGrid ({ categories }) {
-    let count = 0;
+    const gridAreas = ["card1", "card2", "card3", "card4", "card5"];
+
+
     return (
-        <>
-            {categories.map(cat => (
-                <CategoryCard key={count++} category={cat} />
+        <div className={styles.categoryGrid}>
+            {categories.slice(0, 5).map((cat, i) => (
+                <CategoryCard
+                    key={i}
+                    category={{ ...cat, gridArea: gridAreas[i] }}
+                />
             ))}
-        </>
+        </div>
     );
 };

@@ -1,5 +1,10 @@
 import {useEffect, useState} from "react";
 import {apiClientGet} from "../../../services/apiClient.jsx";
+import catImg1 from "../../../assets/category-1.jpg";
+import catImg2 from "../../../assets/category-2.jpg";
+import catImg3 from "../../../assets/category-3.jpg";
+import catImg4 from "../../../assets/category-4.jpg";
+import catImg5 from "../../../assets/category-5.jpg";
 
 export default function useHomeData() {
     const [categories, setCategories] = useState([]);
@@ -7,14 +12,49 @@ export default function useHomeData() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const cats = [
+        {
+            name: "Women's dresses",
+            slug: "womens-dresses",
+            image: catImg1,
+            gridArea: "card1"
+        },
+        {
+            name: "Men's shirts",
+            slug: "mens-shirts",
+            image: catImg2,
+            gridArea: "card2"
+        },
+        {
+            name: "Tops",
+            slug: "tops",
+            image: catImg3,
+            gridArea: "card3"
+        },
+        {
+            name: "Beauty",
+            slug: "beauty",
+            image: catImg4,
+            gridArea: "card4"
+        },
+        {
+            name: "Sunglasses",
+            slug: "sunglasses",
+            image: catImg5,
+            griadArea: "card5"
+        }
+    ]
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [catRes, topRes] = await Promise.all([
+                /*const [catRes, topRes] = await Promise.all([
                     apiClientGet("/products/categories"),
                     getTopProducts()
-                ]);
-                setCategories(arbitraryCategorySelection(catRes.data));
+                ]);*/
+                const topRes = await getTopProducts();
+                setCategories(cats);
+                //setCategories(arbitraryCategorySelection(catRes.data));
                 setTopProducts(topRes);
                 setLoading(false);
             } catch (error) {
