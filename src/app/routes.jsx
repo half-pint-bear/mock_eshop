@@ -4,6 +4,7 @@ import HomePage from "../pages/homepage/HomePage.jsx";
 import SingleCategoryPage from "../pages/singleCategoryPage/SingleCategoryPage.jsx";
 import SingleProductPage from "../pages/singleProductPage/SingleProductPage.jsx";
 import CartPage from "../pages/cartPage/CartPage.jsx";
+import AllProductsPage from "../pages/allProductsPage/AllProductsPage.jsx";
 
 export const Routes = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const Routes = createBrowserRouter([
             {
                 path: "/cart",
                 element: <CartPage />
+            },
+            {
+                path: "/products/all",
+                element: <AllProductsPage />
             }
         ]
     }

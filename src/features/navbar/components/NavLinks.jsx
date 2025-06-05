@@ -5,7 +5,7 @@ import styles from '../styles/Navbar.module.css';
 export default function NavLinks({closeMenu}) {
     const links = [
         { to: '/', label: 'Accueil' },
-        { to: '/products', label: 'Products' },
+        { to: '/products/all', label: 'Products' },
         { to: '/about', label: 'À propos' },
     ];
 
