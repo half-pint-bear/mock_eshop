@@ -11,23 +11,33 @@ export function useCart() {
 const cartReducer = (state, action) => {
     switch (action.type) {
         case "ADD":
-            { const existing = state.items.find(item => item.id === action.payload.id);
-            if (existing) {
-                // Increments quantity
-                return {
-                    ...state,
-                    items: state.items.map(item =>
-                        item.id === action.payload.id
-                            ? { ...item, quantity: item.quantity + action.payload.quantity }
-                            : item
-                    ),
-                };
-            } else {
-                return {
-                    ...state,
-                    items: [...state.items, action.payload],
-                };
-            } }
+            {
+                const existing = state.items.find(item => item.id === action.payload.id);
+                if (existing) {
+                    // Increments quantity
+                    return {
+                        ...state,
+                        items: state.items.map(item =>
+                            item.id === action.payload.id
+                                ? { ...item, quantity: item.quantity + action.payload.quantity }
+                                : item
+                        ),
+                    };
+                } else {
+                    return {
+                        ...state,
+                        items: [...state.items, action.payload],
+                    };
+                }
+            }
+        case "UPDATE":
+            return {
+                ...state,
+                items: state.items.map(item =>
+                item.id === action.payload.id
+                ? { ...item, quantity: action.payload.quantity }
+                : item)
+            }
         case "REMOVE":
             return {
                 ...state,
@@ -66,6 +76,17 @@ export function CartProvider({ children }) {
         });
     };
 
+    const updateCart = (id, quantity) => {
+        //Prevents negative quantity insertion
+        if (quantity < 1)
+            return;
+
+        dispatch({
+            type: "UPDATE",
+            payload: {id, quantity}
+        })
+    }
+
     const removeFromCart = (id) => {
         dispatch({ type: "REMOVE", payload: id });
     };
@@ -81,6 +102,7 @@ export function CartProvider({ children }) {
             value={{
                 cart: state.items,
                 addToCart,
+                updateCart,
                 removeFromCart,
                 clearCart,
                 totalItems }}>

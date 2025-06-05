@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
 import styles from './styles/Navbar.module.css';
@@ -7,10 +7,24 @@ import NavLinks from "./components/NavLinks.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import AccountIcon from "./components/AccountIcon.jsx";
 import CartPreview from "./components/CartPreview.jsx";
+import CartIcon from "./components/CartIcon.jsx";
 
 export default function Navbar() {
+
     const { isOpen, toggleMenu, closeMenu } = useNavbar();
     const [showSearch, setShowSearch] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
+    const cartRef = useRef();
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if(cartRef.current && !cartRef.current.contains(e.target)) {
+                setCartOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    })
 
     return (
         <nav className={styles.navbar}>
@@ -40,8 +54,10 @@ export default function Navbar() {
                 <button className={styles.searchIcon} onClick={() => setShowSearch(true)}>
                     <Search size={20} />
                 </button>
-
-                <CartPreview />
+                <div ref={cartRef}>
+                    <CartIcon onClick={() => setCartOpen(prev => !prev)} />
+                    <CartPreview open={cartOpen} closePreview={() => setCartOpen(false)} />
+                </div>
                 <AccountIcon />
             </div>
 

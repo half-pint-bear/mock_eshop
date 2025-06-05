@@ -20,9 +20,10 @@
 
 .categoryContent {
     position: relative;
-    padding: 1rem;
+    padding: 0.5rem;
     color: black;
     width: 100%;
+    align-content: center;
 }
 
 .categoryTitle {
