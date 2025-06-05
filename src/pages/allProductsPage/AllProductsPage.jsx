@@ -3,12 +3,17 @@ import useProductsPagination from "./hooks/useProductsPagination.jsx";
 import Loader from "../../shared/components/loader/Loader.jsx";
 import ProductGrid from "./components/ProductGrid.jsx";
 import styles from "./styles/AllProductsPage.module.css";
+import CategoryFilter from "./components/CategoryFilter.jsx";
+import useAllCategories from "../allCategoriesPage/hooks/useAllCategories.jsx";
 
 export default function AllProductsPage() {
     const [page, setPage] = useState(1);
-    const { products, totalPages, loading } = useProductsPagination(page, 25);
+    const [selectedCategories,  setSelectedCategories] = useState([]);
+    const { products, totalPages, loading } = useProductsPagination(page, 25, selectedCategories);
 
-    if (loading) return <Loader />;
+    const {categories: allCategories, loading: loadingCategories} = useAllCategories();
+
+    if (loading || loadingCategories) return <Loader />;
 
     return (
         <div>
@@ -16,18 +21,14 @@ export default function AllProductsPage() {
             <div className={styles.pageContainer}>
                 <aside className={styles.sidebar}>
                     <h3>Filtres</h3>
-                    <div>
-                        <label>
-                            <input type="checkbox" />
-                            Prix moins de 50€
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" />
-                            Stock disponible
-                        </label>
-                    </div>
+                    <CategoryFilter
+                        categories={allCategories}
+                        selected={selectedCategories}
+                        onChange={(newSelected) => {
+                            setSelectedCategories(newSelected);
+                            setPage(1);
+                        }}
+                    />
                 </aside>
 
                 <main className={styles.mainContent}>
