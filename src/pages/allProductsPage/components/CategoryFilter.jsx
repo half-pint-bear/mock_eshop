@@ -1,46 +1,53 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import styles from "../styles/CategoryFilter.module.css";
 
 export default function CategoryFilter({ categories, selected, onChange }) {
     const [showAll, setShowAll] = useState(false);
-    const [localSelected, setLocalSelected] = useState([]);
+    const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        setLocalSelected(selected); // sync avec props
-    }, [selected]);
+    const filteredCategories = useMemo(() => {
+        return categories.filter((c) =>
+            c.toLowerCase().includes(search.toLowerCase())
+        );
+    }, [categories, search]);
+
+    const displayedCategories = showAll ? filteredCategories : filteredCategories.slice(0, 4);
 
     const toggleCategory = (category) => {
-        setLocalSelected((prev) =>
-            prev.includes(category)
-                ? prev.filter((c) => c !== category)
-                : [...prev, category]
-        );
+        if (selected.includes(category)) {
+            onChange(selected.filter((c) => c !== category));
+        } else {
+            onChange([...selected, category]);
+        }
     };
-
-    const displayedCategories = showAll ? categories : categories.slice(0, 4);
 
     return (
         <div>
             <h3>Catégories</h3>
-            <ul className={styles.list}>
-                {displayedCategories.map((categoryObj) => {
-                    const category = typeof categoryObj === "string" ? categoryObj : categoryObj.name;
-                    return (
+            <input
+                type="text"
+                className={styles.searchInput}
+                placeholder="Rechercher une catégorie"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
+            <div className={styles.listContainer}>
+                <ul className={styles.list}>
+                    {displayedCategories.map((category) => (
                         <li key={category}>
                             <label>
                                 <input
                                     type="checkbox"
-                                    checked={localSelected.includes(category)}
+                                    checked={selected.includes(category)}
                                     onChange={() => toggleCategory(category)}
                                 />
                                 {category}
                             </label>
                         </li>
-                    );
-                })}
-            </ul>
-
-            {categories.length > 3 && (
+                    ))}
+                </ul>
+            </div>
+            {filteredCategories.length > 4 && (
                 <button
                     type="button"
                     className={styles.toggleButton}
@@ -49,16 +56,6 @@ export default function CategoryFilter({ categories, selected, onChange }) {
                     {showAll ? "Voir moins" : "Voir plus"}
                 </button>
             )}
-
-            <div style={{ marginTop: "1rem" }}>
-                <button
-                    type="button"
-                    className={styles.toggleButton}
-                    onClick={() => onChange(localSelected)}
-                >
-                    Appliquer les filtres
-                </button>
-            </div>
         </div>
     );
 }

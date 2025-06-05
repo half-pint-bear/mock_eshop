@@ -4,6 +4,24 @@
     margin: 0 0 1rem 0;
 }
 
+.listContainer {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 .toggleButton {
     background-color: transparent;
     border: none;
@@ -16,4 +34,26 @@
 
 .toggleButton:hover {
     color: #0056b3;
+}
+
+.desktopOnly {
+    display: block;
+}
+
+.mobileOnly {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .listContainer {
+        max-height: none;
+    }
+    
+    .desktopOnly {
+        display: none;
+    }
+
+    .mobileOnly {
+        display: block;
+    }
 }
