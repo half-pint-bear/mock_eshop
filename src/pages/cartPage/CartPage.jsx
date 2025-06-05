@@ -6,7 +6,7 @@ export default function CartPage() {
     const { cart, removeFromCart, clearCart, updateCart, totalItems } = useCart();
     const [localCart, setLocalCart] = useState([]);
 
-    // On synchronise le panier local avec celui du contexte
+    // Synchronize local cart with context cart
     useEffect(() => {
         setLocalCart(cart.map(item => ({ ...item }))); // shallow copy
     }, [cart]);
@@ -25,7 +25,6 @@ export default function CartPage() {
         localCart.forEach(item => {
             updateCart(item.id, item.quantity);
         });
-        // Vous pouvez aussi ici déclencher une animation/toast
     };
 
     const totalPrice = localCart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
@@ -36,22 +35,43 @@ export default function CartPage() {
     return (
         <div className={styles.cart}>
             <h2>Votre panier</h2>
-            <ul className={styles.cartList}>
-                {localCart.map((item) => (
-                    <li key={item.id} className={styles.cartItem}>
-                        <div>
-                            <strong>{item.title}</strong>
-                            <p>Prix unitaire : {item.price} €</p>
-                            <div className={styles.quantityControls}>
-                                <button onClick={() => handleQuantityChange(item.id, -1)} disabled={item.quantity <= 1}>−</button>
-                                <span>{item.quantity}</span>
-                                <button onClick={() => handleQuantityChange(item.id, +1)}>+</button>
-                            </div>
+
+            {/* Tab header */}
+            <div className={`${styles.cartList} ${styles.cartHeader}`}>
+                <span>Produit</span>
+                <span>Prix unitaire</span>
+                <span>Quantité</span>
+                <span>Total</span>
+                <span>Action</span>
+            </div>
+
+            {/* Items lines */}
+                {localCart.map(item => (
+                    <div key={item.id} className={styles.cartList}>
+                        {/* Produit : miniature + nom */}
+                        <div className={`${styles.cartCell} ${styles.cartProduct}`}>
+                            <img src={item.thumbnail} alt={item.title} className={styles.thumbnail} />
+                            <span className={styles.productInfo}>{item.title}</span>
                         </div>
-                        <button onClick={() => removeFromCart(item.id)}>Retirer</button>
-                    </li>
+
+                        <div className={styles.cartCell}>{item.price} €</div>
+
+                        <div className={`${styles.cartCell} ${styles.quantityControls}`}>
+                            <button onClick={() => handleQuantityChange(item.id, -1)} disabled={item.quantity <= 1}>−</button>
+                            <span>{item.quantity}</span>
+                            <button onClick={() => handleQuantityChange(item.id, +1)}>+</button>
+                        </div>
+
+                        <div className={`${styles.cartCell} ${styles.cartTotal}`}>
+                            {(item.price * item.quantity).toFixed(2)} €
+                        </div>
+
+                        <div className={styles.cartCell}>
+                            <button onClick={() => removeFromCart(item.id)}>Retirer</button>
+                        </div>
+                    </div>
                 ))}
-            </ul>
+
             <hr />
             <p><strong>Total d'articles :</strong> {localCart.reduce((sum, i) => sum + i.quantity, 0)}</p>
             <p><strong>Total :</strong> {totalPrice} €</p>
