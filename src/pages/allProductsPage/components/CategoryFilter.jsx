@@ -7,17 +7,17 @@ export default function CategoryFilter({ categories, selected, onChange, onApply
 
     const filteredCategories = useMemo(() => {
         return categories.filter((c) =>
-            c.toLowerCase().includes(search.toLowerCase())
+            c.name.toLowerCase().includes(search.toLowerCase())
         );
     }, [categories, search]);
 
     const displayedCategories = showAll ? filteredCategories : filteredCategories.slice(0, 4);
 
     const toggleCategory = (category) => {
-        if (selected.includes(category)) {
-            onChange(selected.filter((c) => c !== category));
+        if (selected.includes(category.slug)) {
+            onChange(selected.filter((slug) => slug !== category.slug));
         } else {
-            onChange([...selected, category]);
+            onChange([...selected, category.slug]);
         }
     };
 
@@ -34,14 +34,14 @@ export default function CategoryFilter({ categories, selected, onChange, onApply
             <div className={styles.listContainer}>
                 <ul className={styles.list}>
                     {displayedCategories.map((category) => (
-                        <li key={category}>
+                        <li key={category.slug}>
                             <label>
                                 <input
                                     type="checkbox"
-                                    checked={selected.includes(category)}
+                                    checked={selected.includes(category.slug)}
                                     onChange={() => toggleCategory(category)}
                                 />
-                                {category}
+                                {category.name}
                             </label>
                         </li>
                     ))}

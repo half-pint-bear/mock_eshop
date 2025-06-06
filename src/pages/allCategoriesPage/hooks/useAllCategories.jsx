@@ -9,11 +9,8 @@ export default function useAllCategories() {
     useEffect(() => {
         apiClientGet("/products/categories")
             .then((res) => {
-
-                const slugs = res.data
-                    .map((c) => typeof c === "string" ? c : c.slug
-                );
-                const sorted = slugs.sort((a, b) => a.localeCompare(b));
+                const sorted = res.data
+                    .sort((a, b) => a.name.localeCompare(b.name, "fr"));
                 setCategories(sorted);
             })
             .catch((err) => {

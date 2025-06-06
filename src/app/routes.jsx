@@ -5,6 +5,7 @@ import SingleCategoryPage from "../pages/singleCategoryPage/SingleCategoryPage.j
 import SingleProductPage from "../pages/singleProductPage/SingleProductPage.jsx";
 import CartPage from "../pages/cartPage/CartPage.jsx";
 import AllProductsPage from "../pages/allProductsPage/AllProductsPage.jsx";
+import AllCategoriesPage from "../pages/allCategoriesPage/AllCategoriesPage.jsx";
 
 export const Routes = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const Routes = createBrowserRouter([
             {
                 path: "/products/all",
                 element: <AllProductsPage />
+            },
+            {
+                path: "/categories/all",
+                element: <AllCategoriesPage />
             }
         ]
     }
