@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import styles from "../styles/CategoryFilter.module.css";
 
-export default function CategoryFilter({ categories, selected, onChange }) {
+export default function CategoryFilter({ categories, selected, onChange, onApply }) {
     const [showAll, setShowAll] = useState(false);
     const [search, setSearch] = useState("");
 
@@ -54,6 +54,15 @@ export default function CategoryFilter({ categories, selected, onChange }) {
                     onClick={() => setShowAll((prev) => !prev)}
                 >
                     {showAll ? "Voir moins" : "Voir plus"}
+                </button>
+            )}
+            {onApply && (
+                <button
+                    type="button"
+                    className={styles.applyButton}
+                    onClick={onApply}
+                >
+                    Appliquer les filtres
                 </button>
             )}
         </div>

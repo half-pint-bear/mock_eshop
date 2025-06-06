@@ -14,6 +14,7 @@ export default function useProductsPagination(page = 1, limit = 25, selectedCate
             try {
                 let allProducts = [];
 
+                //Default products
                 if (selectedCategories.length === 0) {
                     const response = await apiClientGet(`/products?limit=${limit}&skip=${skip}`);
                     setProducts(response.data.products);
@@ -21,6 +22,7 @@ export default function useProductsPagination(page = 1, limit = 25, selectedCate
                     return;
                 }
 
+                //Single cat
                 if (selectedCategories.length === 1) {
                     const response = await apiClientGet(`/products/category/${selectedCategories[0]}?limit=${limit}&skip=${skip}`);
                     setProducts(response.data.products);
@@ -28,7 +30,7 @@ export default function useProductsPagination(page = 1, limit = 25, selectedCate
                     return;
                 }
 
-                // Plusieurs catégories : on récupère tout, puis on pagine côté client
+                // Handle several cats
                 const allResponses = await Promise.all(
                     selectedCategories.map(cat =>
                         apiClientGet(`/products/category/${cat}`)
@@ -39,7 +41,7 @@ export default function useProductsPagination(page = 1, limit = 25, selectedCate
                     allProducts.push(...res.data.products);
                 });
 
-                // Élimine les doublons (au cas où des produits se répètent)
+                // Kill doubles
                 const uniqueProducts = Array.from(
                     new Map(allProducts.map(p => [p.id, p])).values()
                 );

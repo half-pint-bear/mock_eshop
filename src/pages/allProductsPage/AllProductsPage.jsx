@@ -10,7 +10,8 @@ import ModalFilter from "./components/ModalFilter.jsx";
 export default function AllProductsPage() {
     const [page, setPage] = useState(1);
     const [selectedCategories,  setSelectedCategories] = useState([]);
-    const { products, totalPages, loading } = useProductsPagination(page, 25, selectedCategories);
+    const [appliedCategories, setAppliedCategories] = useState([]);
+    const { products, totalPages, loading } = useProductsPagination(page, 25, appliedCategories);
 
     const {categories: allCategories, loading: loadingCategories} = useAllCategories();
     const [showFilterModal, setShowFilterModal] = useState(false);
@@ -26,8 +27,9 @@ export default function AllProductsPage() {
                     <CategoryFilter
                         categories={allCategories}
                         selected={selectedCategories}
-                        onChange={(newSelected) => {
-                            setSelectedCategories(newSelected);
+                        onChange={setSelectedCategories}
+                        onApply={() => {
+                            setAppliedCategories(selectedCategories);
                             setPage(1);
                         }}
                     />
@@ -41,6 +43,11 @@ export default function AllProductsPage() {
                                 categories={allCategories}
                                 selected={selectedCategories}
                                 onChange={setSelectedCategories}
+                                onApply={() => {
+                                    setAppliedCategories(selectedCategories);
+                                    setPage(1);
+                                    setShowFilterModal(false);
+                                }}
                             />
                             <button onClick={() => setShowFilterModal(false)}>Appliquer</button>
                         </ModalFilter>

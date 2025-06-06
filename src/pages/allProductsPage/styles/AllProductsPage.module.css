@@ -32,3 +32,21 @@
     align-items: center;
     margin-top: 2rem;
 }
+
+.mobileOnly {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .listContainer {
+        max-height: none;
+    }
+
+    .desktopOnly {
+        display: none;
+    }
+
+    .mobileOnly {
+        display: block;
+    }
+}
