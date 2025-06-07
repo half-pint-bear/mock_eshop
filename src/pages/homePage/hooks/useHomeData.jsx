@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
 import {apiClientGet} from "../../../services/apiClient.jsx";
-import catImg1 from "../../../assets/category-1.jpg";
-import catImg2 from "../../../assets/category-2.jpg";
-import catImg3 from "../../../assets/category-3.jpg";
-import catImg4 from "../../../assets/category-4.jpg";
-import catImg5 from "../../../assets/category-5.jpg";
+import catImg1 from "../../../assets/womens-dresses.jpg";
+import catImg2 from "../../../assets/mens-shirts.jpg";
+import catImg3 from "../../../assets/tops.jpg";
+import catImg4 from "../../../assets/beauty.jpg";
+import catImg5 from "../../../assets/sunglasses.jpg";
 
 export default function useHomeData() {
     const [categories, setCategories] = useState([]);
@@ -48,13 +48,8 @@ export default function useHomeData() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                /*const [catRes, topRes] = await Promise.all([
-                    apiClientGet("/products/categories"),
-                    getTopProducts()
-                ]);*/
                 const topRes = await getTopProducts();
                 setCategories(cats);
-                //setCategories(arbitraryCategorySelection(catRes.data));
                 setTopProducts(topRes);
                 setLoading(false);
             } catch (error) {
@@ -67,18 +62,6 @@ export default function useHomeData() {
         fetchData();
     }, []);
 
-
-    /**
-     * Arbitrary filtering categories
-     * @param {Promise<categories[]>} categories
-     * @returns {*[]}
-     */
-    function arbitraryCategorySelection (categories)  {
-        const slugs = ['womens-dresses','mens-shirts', 'tops', 'beauty', 'sunglasses'];
-
-        return slugs.map(slug => categories.find(category => category.slug === slug))
-                    .filter(Boolean);
-    }
 
     /**
      * Retrieving most rated products of inner selected categories
