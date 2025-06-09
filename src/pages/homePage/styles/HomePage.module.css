@@ -20,6 +20,17 @@
     min-height: 80vh;
 }
 
+.banner {
+    width: 100%;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.banner h3 {
+
+}
 @media (max-width: 768px) {
     .categoryGrid {
         grid-template-areas:

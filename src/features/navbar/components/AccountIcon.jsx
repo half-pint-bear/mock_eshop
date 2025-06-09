@@ -1,10 +1,9 @@
 import React from 'react';
 import { User } from 'lucide-react';
-import styles from '../styles/Navbar.module.css';
 
-export default function AccountIcon() {
+export default function AccountIcon({className}) {
     return (
-        <button className={styles.iconButton} aria-label="Compte">
+        <button className={className} aria-label="Compte">
             <User size={24} />
         </button>
     );

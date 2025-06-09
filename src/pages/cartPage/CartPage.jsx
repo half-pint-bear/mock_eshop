@@ -76,7 +76,7 @@ export default function CartPage() {
             <p><strong>Total d'articles :</strong> {localCart.reduce((sum, i) => sum + i.quantity, 0)}</p>
             <p><strong>Total :</strong> {totalPrice} €</p>
             <button onClick={clearCart}>Vider le panier</button>
-            <button onClick={handleUpdateCart}>Mettre à jour le panier</button>
+            <button onClick={handleUpdateCart}>Valider le panier</button>
         </div>
     );
 }

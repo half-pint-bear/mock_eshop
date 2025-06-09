@@ -1,7 +1,7 @@
 .categoryCard {
     position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: flex-start;
     overflow: hidden;
     font-family: var(--font-primary);
@@ -30,7 +30,11 @@
     margin-left: 1rem;
 }
 
-.categoryCard:nth-child(1) .categoryTitle {
+.categoryCard:first-child {
+    align-items: stretch;
+}
+
+.categoryCard:first-child .categoryTitle {
     font-size: 3rem;
 }
 .card1 {

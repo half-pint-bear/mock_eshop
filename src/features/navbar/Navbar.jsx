@@ -37,11 +37,11 @@ export default function Navbar() {
                 <NavLink to="/" className={styles.logoLink}>
                     Mock eShop
                 </NavLink>
-            </div>
 
-            <ul className={`${styles.navLinks} ${isOpen ? styles.open : ''}`}>
-                <NavLinks closeMenu={closeMenu} />
-            </ul>
+                <ul className={`${styles.navLinks} ${isOpen ? styles.open : ''}`}>
+                    <NavLinks closeMenu={closeMenu} />
+                </ul>
+            </div>
 
             {/* Desktop searchbar */}
             <div className={styles.desktopSearch}>
@@ -58,7 +58,7 @@ export default function Navbar() {
                     <CartIcon onClick={() => setCartOpen(prev => !prev)} />
                     <CartPreview open={cartOpen} closePreview={() => setCartOpen(false)} />
                 </div>
-                <AccountIcon />
+                <AccountIcon className={styles.iconButton}/>
             </div>
 
             {/* Overlay search (mobile only) */}
