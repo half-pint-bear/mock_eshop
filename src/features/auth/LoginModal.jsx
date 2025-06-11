@@ -21,7 +21,7 @@ export default function LoginModal({onClose}) {
             });
 
             const data = res.data;
-            login(data.token, data);
+            login(data.accessToken);
             onClose();
             navigate("/account");
         } catch (error) {

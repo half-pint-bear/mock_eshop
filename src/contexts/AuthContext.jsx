@@ -14,18 +14,30 @@ export function AuthProvider({ children }) {
             apiClientGet("/auth/me", {
                 headers: {
                     Authorization: `Bearer ${token}`
-                }
+                },
+                credentials: "include"
             })
-                .then(res => res.json())
-                .then(setUser)
-                .catch(() => setUser(null));
+                .then(res => {
+
+                    setUser(res.data)
+                })
+                .catch((error) => {
+                    console.error("/auth/me error : ", error);
+                    if(error.response) {
+                        console.error("Details  ", error.response.status, error.response.data);
+                    }
+                    setUser(null)
+                });
         } else {
             localStorage.removeItem("token");
             setUser(null);
         }
     }, [token]);
 
-    const login = (newToken) => setToken(newToken);
+    const login = (newToken) => {
+        localStorage.setItem("token", newToken);
+        setToken(newToken);
+    }
     const logout = () => setToken(null);
 
     return (

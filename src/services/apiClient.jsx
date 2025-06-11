@@ -20,7 +20,7 @@ apiClient.interceptors.response.use(
 
 // Basic CRUD functions
 export const apiClientGet = (endpoint, params = {}) =>
-    apiClient.get(endpoint, { params });
+    apiClient.get(endpoint,  params );
 
 export const apiClientPost = (endpoint, data = {}) =>
     apiClient.post(endpoint, data);
