@@ -56,7 +56,7 @@ export default function AccountIcon({ className }) {
                     <button onClick={() => { navigate("/account"); setShowDropdown(false); }}>
                         Mon compte
                     </button>
-                    <button onClick={() => { logout(); setShowDropdown(false); }}>
+                    <button onClick={() => { logout(); setShowDropdown(false); navigate("/"); }}>
                         Se déconnecter
                     </button>
                 </div>

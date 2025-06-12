@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+    justify-content: center;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.profile {
+    flex: 1 1 300px;
+    text-align: center;
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 0 4px #ddd;
+}
+
+.role {
+    font-style: italic;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+.info {
+    flex: 2 1 400px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.info h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.info > div {
+    margin-bottom: 0.8rem;
+}
+
+.addressCard {
+    background-color: #f3f3f3;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.addressCard h4 {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.placeholder {
+    font-style: italic;
+    color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .info, .profile {
+        width: 100%;
+    }
+}
