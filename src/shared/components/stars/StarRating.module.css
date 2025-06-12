@@ -1,6 +1,8 @@
 .starRating {
     display: flex;
     gap: 2px;
+    align-self: center;
+    justify-content: center;
 }
 
 .star {
