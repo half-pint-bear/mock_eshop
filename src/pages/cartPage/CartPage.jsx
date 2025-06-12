@@ -1,10 +1,16 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect, useContext} from "react";
 import { useCart } from "../../contexts/CartContext.jsx";
 import styles from "./styles/CartPage.module.css";
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../../contexts/AuthContext.jsx";
+import LoginModal from "../../features/auth/LoginModal.jsx";
 
 export default function CartPage() {
     const { cart, removeFromCart, clearCart, updateCart, totalItems } = useCart();
     const [localCart, setLocalCart] = useState([]);
+    const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
+    const [showModal, setShowModal] = useState(false);
 
     // Synchronize local cart with context cart
     useEffect(() => {
@@ -76,7 +82,25 @@ export default function CartPage() {
             <p><strong>Total d'articles :</strong> {localCart.reduce((sum, i) => sum + i.quantity, 0)}</p>
             <p><strong>Total :</strong> {totalPrice} €</p>
             <button onClick={clearCart}>Vider le panier</button>
-            <button onClick={handleUpdateCart}>Valider le panier</button>
+            <button
+                onClick={() => {
+                    handleUpdateCart(); // met à jour les quantités
+                    if (user) {
+                        navigate("/checkout");
+                    } else {
+                        alert("Vous devez être connecté pour valider votre panier.");
+                        setShowModal(true);
+
+                    }
+                }}
+            >
+                Valider le panier
+            </button>
+            {showModal && <LoginModal
+                                onClose={() => setShowModal(false)}
+                                redirectTo="/checkout"
+                          />
+            }
         </div>
     );
 }

@@ -38,7 +38,10 @@ export function AuthProvider({ children }) {
         localStorage.setItem("token", newToken);
         setToken(newToken);
     }
-    const logout = () => setToken(null);
+    const logout = () => {
+        setToken(null);
+        setUser(null);
+    }
 
     return (
         <AuthContext.Provider value={{ token, user, login, logout }}>

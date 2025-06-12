@@ -4,7 +4,7 @@ import {apiClientPost} from "../../services/apiClient.jsx";
 import {AuthContext} from "../../contexts/AuthContext.jsx";
 import styles from "./LoginModal.module.css"
 
-export default function LoginModal({onClose}) {
+export default function LoginModal({onClose, redirectTo = "/account"}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -23,7 +23,7 @@ export default function LoginModal({onClose}) {
             const data = res.data;
             login(data.accessToken);
             onClose();
-            navigate("/account");
+            navigate(redirectTo);
         } catch (error) {
             console.error(error);
             setError("Wrong credentials");
