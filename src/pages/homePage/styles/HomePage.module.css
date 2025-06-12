@@ -22,15 +22,32 @@
 
 .banner {
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .banner img {
     width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 .banner h3 {
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 3rem;
+    font-family: var(--font-secondary);
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+    padding: 0 1rem;
+    z-index: 2;
 }
+
 @media (max-width: 768px) {
     .categoryGrid {
         grid-template-areas:
@@ -42,5 +59,11 @@
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, 1fr);
         height: auto;
+    }
+
+    .banner h3 {
+        font-size: 1.5rem;
+        padding: 0 0.5rem;
+        font-size: clamp(1rem, 4vw, 2.5rem);
     }
 }
