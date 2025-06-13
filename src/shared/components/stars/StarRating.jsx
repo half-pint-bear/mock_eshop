@@ -1,11 +1,12 @@
 import React from "react";
 import styles from "./StarRating.module.css";
 
-export default function StarRating({ rating = 0 }) {
+export default function StarRating({ rating = 0, align = "center" }) {
     const maxStars = 5;
+    const alignmentClass = align === "left" ? styles.leftAlign : "";
 
     return (
-        <div className={styles.starRating}>
+        <div className={`${styles.starRating} ${alignmentClass}`}>
             {[...Array(maxStars)].map((_, i) => {
                 const fill = rating >= i + 1 ? "full"
                     : rating >= i + 0.5 ? "half"

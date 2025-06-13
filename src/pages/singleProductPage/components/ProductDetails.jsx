@@ -15,7 +15,7 @@ export default function ProductDetails({ reviews = [], product }) {
                     {reviews.map((r, i) => (
                         <li key={i} className={styles.reviewItem}>
                             <strong>Rating : {r.rating} / 5 </strong>
-                            <StarRating rating={r.rating} />
+                            <StarRating aling="left" rating={r.rating} />
                             <strong>{r.reviewerName || "Utilisateur"}</strong>
                             <p>{r.comment}</p>
                             <p>Sent on {r.date}</p>
@@ -35,6 +35,8 @@ export default function ProductDetails({ reviews = [], product }) {
                     <li><strong>Hauteur</strong> : {product.dimensions.height} mm</li>
                     <li><strong>Profondeur</strong> : {product.dimensions.depth} mm</li>
                     <li><strong>Poids</strong> : {product.weight * 100} g</li>
+                    <li><strong>Garantie</strong> : {product.warrantyInformation}</li>
+                    <li><strong>Expédition</strong> : {product.shippingInformation}</li>
                 </ul>
             ) : (
                 <p>Aucune spécification technique disponible.</p>

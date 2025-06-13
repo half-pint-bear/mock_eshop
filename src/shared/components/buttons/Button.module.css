@@ -19,10 +19,15 @@
 
 .detailsBtn {
     background-color: #ca1515;
-    color: white;
     border-radius: 1rem;
     width: 40%;
     align-self: center;
     font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
+}
+
+@media screen and (min-width: 1024px) {
+    .detailsBtn {
+        font-size: 2rem;}
 }

@@ -2,7 +2,10 @@
     display: flex;
     gap: 2px;
     align-self: center;
-    justify-content: center;
+}
+
+.leftAlign {
+    justify-self: flex-start;
 }
 
 .star {

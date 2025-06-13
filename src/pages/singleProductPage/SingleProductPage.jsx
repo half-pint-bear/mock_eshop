@@ -68,7 +68,7 @@ export default function SingleProductPage() {
                         <h1>{product.title}</h1>
                         <p className={styles.brand}>{product.brand}</p>
                         <div>
-                            <StarRating rating={product.rating} />
+                            <StarRating align="left" rating={product.rating} />
                             ({product.reviews?.length ?? 0} reviews)
                         </div>
                         <p className={styles.price}>${product.price}</p>
