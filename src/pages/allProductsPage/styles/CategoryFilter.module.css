@@ -1,65 +1,104 @@
+/* Structure de liste */
 .list {
     list-style: none;
     padding: 0;
     margin: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .listContainer {
     max-height: 300px;
     overflow-y: auto;
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    border-radius: 4px;
-    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9fafb;
     margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .searchInput {
+    box-sizing:  border-box;
     width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    margin-bottom: 1rem;
     font-size: 0.9rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: border 0.2s;
 }
-.toggleButton {
-    background-color: transparent;
-    border: none;
-    color: #007bff;
+.searchInput:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+/* Checkbox + label */
+.list input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
     cursor: pointer;
-    padding: 0;
+}
+
+.list label {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.list label:hover {
+    color: #1f2937;
+}
+
+/* Voir plus/moins */
+.toggleButton {
+    background: none;
+    border: none;
+    color: #3b82f6;
+    cursor: pointer;
+    padding: 0.25rem 0;
     font-size: 0.9rem;
     text-decoration: underline;
 }
-
 .toggleButton:hover {
-    color: #0056b3;
+    color: #1d4ed8;
 }
 
 .applyButton {
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #1f6feb;
+    padding: 0.6rem 1.2rem;
+    background-color: #3b82f6;
     color: white;
+    font-weight: 500;
+    font-size: 0.95rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.applyButton:hover {
+    background-color: #2563eb;
 }
 
+/* Responsive */
 .desktopOnly {
     display: block;
 }
-
 @media (max-width: 768px) {
     .listContainer {
         max-height: none;
     }
-
     .desktopOnly {
         display: none;
     }
-
     .mobileOnly {
         display: block;
+    }
+
+    .applyButton {
+        margin-left: 1rem;
     }
 }

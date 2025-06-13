@@ -6,15 +6,21 @@ import styles from "./styles/AllProductsPage.module.css";
 import CategoryFilter from "./components/CategoryFilter.jsx";
 import useAllCategories from "../allCategoriesPage/hooks/useAllCategories.jsx";
 import ModalFilter from "./components/ModalFilter.jsx";
+import { SlidersHorizontal} from "lucide-react";
 
 export default function AllProductsPage() {
     const [page, setPage] = useState(1);
     const [selectedCategories,  setSelectedCategories] = useState([]);
     const [appliedCategories, setAppliedCategories] = useState([]);
     const { products, totalPages, loading } = useProductsPagination(page, 25, appliedCategories);
+    const [modalState, setModalState] = useState("closed")
 
     const {categories: allCategories, loading: loadingCategories} = useAllCategories();
-    const [showFilterModal, setShowFilterModal] = useState(false);
+
+    const closeModal = () => {
+        setModalState("exiting");
+        setTimeout(() => setModalState("closed"), 200);
+    }
 
     if (loading || loadingCategories) return <Loader />;
 
@@ -22,7 +28,7 @@ export default function AllProductsPage() {
         <div>
             <h2 className={styles.pageTitle}>Liste des produits</h2>
             <div className={styles.pageContainer}>
-                <aside className={`${styles.sidebar} & ${styles.desktopOnly}`}>
+                <aside className={`${styles.sidebar} ${styles.desktopOnly}`}>
                     <h3>Filtres</h3>
                     <CategoryFilter
                         categories={allCategories}
@@ -36,20 +42,27 @@ export default function AllProductsPage() {
                 </aside>
 
                 <div className={styles.mobileOnly}>
-                    <button onClick={() => setShowFilterModal(true)}>Filtrer</button>
-                    {showFilterModal && (
-                        <ModalFilter onClose={() => setShowFilterModal(false)}>
-                            <CategoryFilter
-                                categories={allCategories}
-                                selected={selectedCategories}
-                                onChange={setSelectedCategories}
-                                onApply={() => {
-                                    setAppliedCategories(selectedCategories);
-                                    setPage(1);
-                                    setShowFilterModal(false);
-                                }}
-                            />
-                            <button onClick={() => setShowFilterModal(false)}>Appliquer</button>
+                    <button
+                        className={styles.filterButton}
+                        onClick={() => setModalState("entering")}
+                    >
+                        <SlidersHorizontal size={20} />
+                        <span>Filtrer</span>
+                    </button>
+                    {modalState !== "closed" && (
+                        <ModalFilter onClose={() => closeModal()}>
+                            <div className={modalState === "entering" ? styles.modalEnter : styles.modalExit}>
+                                <CategoryFilter
+                                    categories={allCategories}
+                                    selected={selectedCategories}
+                                    onChange={setSelectedCategories}
+                                    onApply={() => {
+                                        setAppliedCategories(selectedCategories);
+                                        setPage(1);
+                                        closeModal();
+                                    }}
+                                />
+                            </div>
                         </ModalFilter>
                     )}
                 </div>
