@@ -30,13 +30,20 @@
 
 .pagination {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 2rem;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
+.activePage {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+}
 
 .mobileOnly {
     display: none;
@@ -71,6 +78,7 @@
     animation: fadeOutDown 0.2s ease-in forwards;
 }
 
+
 @media (max-width: 768px) {
     .pageContainer {
         flex-direction: column;
@@ -86,10 +94,6 @@
         margin-bottom: 1rem;
     }
 
-    .pagination {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 }
 
 @keyframes fadeInUp {
