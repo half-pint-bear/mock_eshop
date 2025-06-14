@@ -15,6 +15,7 @@ export default function SingleProductPage() {
     const [mainImage, setMainImage] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const { addToCart } = useCart();
+    const [fade, setFade] = useState(false);
 
     const handleAddToCart = () => {
         addToCart(product, quantity);
@@ -26,6 +27,16 @@ export default function SingleProductPage() {
 
     const handleIncrease = () => {
         setQuantity(prev => prev + 1);
+    };
+
+    const handleThumbnailClick = (img) => {
+        if (mainImage === img) return;
+
+        setFade(true);
+        setTimeout(() => {
+            setMainImage(img);
+            setFade(false);
+        }, 200);
     };
 
     if (!product) return <Loader />;
@@ -47,7 +58,11 @@ export default function SingleProductPage() {
                 {/* GALLERY */}
                 <div className={styles.productGallery}>
                     <div className={styles.mainThumbnail}>
-                        <img src={product.thumbnail} alt={product.title} />
+                        <img
+                            src={mainImage || product.thumbnail}
+                            alt={product.title}
+                            className={fade ? styles.fadeOut : ''}
+                        />
                     </div>
                     <div className={styles.productThumbnails}>
                         {product.images.map((img, i) => (
@@ -56,7 +71,7 @@ export default function SingleProductPage() {
                                 src={img}
                                 alt={`mini-${i}`}
                                 className={`${styles.thumbImg} ${mainImage === img ? styles.active : ''}`}
-                                onClick={() => setMainImage(img)}
+                                onClick={() => handleThumbnailClick(img)}
                             />
                         ))}
                     </div>

@@ -30,7 +30,6 @@
     object-fit: cover;
     cursor: pointer;
     border: 1px solid transparent;
-    transition: border 0.2s ease;
 }
 
 .thumbImg:hover {
@@ -44,10 +43,11 @@
 .mainThumbnail img {
     width: 100%;
     max-width: 400px;
-    height: auto;
+    height: 400px;
     object-fit: contain;
     border: 1px solid #ccc;
 }
+
 
 /* INFOS */
 .productInfos {
@@ -114,8 +114,22 @@ MEDIA QUERIES
     }
 
     .productGallery {
-        flex-direction: row;
+        flex-direction: row-reverse;
         align-items: flex-start;
+    }
+
+    .mainThumbnail {
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mainThumbnail img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
     }
 
     .productThumbnails {
