@@ -7,6 +7,7 @@ export default function NavLinks({closeMenu}) {
         { to: '/', label: 'Accueil' },
         { to: '/products/all', label: 'Articles' },
         { to: '/categories/all', label: 'Catégories' },
+        { to: '/contact',  label: 'Contact' }
     ];
 
     return (

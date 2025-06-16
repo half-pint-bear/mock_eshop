@@ -8,6 +8,7 @@ import AllProductsPage from "../pages/allProductsPage/AllProductsPage.jsx";
 import AllCategoriesPage from "../pages/allCategoriesPage/AllCategoriesPage.jsx";
 import AccountPage from "../pages/accountPage/AccountPage.jsx";
 import CheckoutPage from "../pages/checkoutPage/CheckoutPage.jsx";
+import ContactPage from "../pages/contactPage/ContactPage.jsx";
 
 export const Routes = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ export const Routes = createBrowserRouter([
             {
                 path: "/checkout",
                 element: <CheckoutPage />
+            },
+            {
+                path: "/contact",
+                element: <ContactPage />
             }
         ]
     }
