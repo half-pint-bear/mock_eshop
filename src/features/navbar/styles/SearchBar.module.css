@@ -20,6 +20,7 @@
     top: 100%;
     left: 0;
     right: 0;
+    width: 100%;
     background-color: white;
     border: 1px solid #ccc;
     z-index: 1002;
@@ -34,10 +35,9 @@
 .dropdownItem {
     padding: 10px;
     cursor: pointer;
-}
-
-.dropdownItem a {
-    color: black
+    user-select: none;
+    transition: background-color 0.2s ease-in-out;
+    color: #222222;
 }
 
 .dropdownItem:hover {

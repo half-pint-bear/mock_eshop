@@ -15,7 +15,7 @@
 .leftSection {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2.5rem;
 }
 
 .logoLink {
@@ -30,6 +30,7 @@
     display: flex;
     gap: 2rem;
     list-style: none;
+    margin: 1.5rem;
 }
 
 .navLinks li a {
@@ -67,7 +68,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-right: 2rem;
+    margin-right: 3rem;
 }
 
 .iconButton {
@@ -88,6 +89,7 @@
 .desktopSearch {
     flex: 1;
     margin: 0 2rem;
+    width: 80%;
 }
 
 /* Overlay for mobile search */

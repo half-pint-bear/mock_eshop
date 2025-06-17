@@ -1,59 +1,62 @@
 import styles from '../styles/SearchBar.module.css';
-import {useEffect, useRef, useState} from "react";
+import { useState, useEffect, useRef } from "react";
 import useSearchBar from "../hooks/useSearchBar.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBar() {
     const [query, setQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const {results, loading} = useSearchBar(query);
-    const searchRef = useRef(null);
+    const { results, loading } = useSearchBar(query);
+    const containerRef = useRef(null);
+    const navigate = useNavigate();
 
-    // Fermer la dropdown si on clique en dehors
+    // Open dropdown when results found
+    useEffect(() => {
+        setIsOpen(Array.isArray(results) && results.length > 0);
+    }, [results]);
+
+    // Close dropdown on outside click
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (searchRef.current && !searchRef.current.contains(event.target)) {
+            if (containerRef.current && !containerRef.current.contains(event.target)) {
                 setIsOpen(false);
             }
         };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    const handleInputChange = (e) => {
-        const value = e.target.value;
-        setQuery(value);
-        setIsOpen(true);
-    };
-
-    const handleItemClick = () => {
-        setIsOpen(false); // Ferme la dropdown
-        setQuery('');     // Optionnel : vide le champ
+    const handleItemClick = (product) => {
+        setIsOpen(false);
+        setQuery('');
+        navigate(`/products/${product.id}`);
     };
 
     return (
-        <div className={styles.searchContainer} ref={searchRef}>
+        <div className={styles.searchContainer} ref={containerRef}>
             <input
                 type="text"
                 placeholder="Rechercher un article"
                 className={styles.searchInput}
                 value={query}
-                onChange={handleInputChange}
+                onChange={(e) => setQuery(e.target.value)}
             />
 
             {loading && <div className={styles.spinner}></div>}
 
-            {isOpen && Array.isArray(results) && results.length > 0 && (
+            {isOpen && (
                 <ul className={styles.dropdown}>
                     {results.map((product) => (
-                        <li key={product.id} className={styles.dropdownItem}>
-                            <a href={`/products/${product.id}`} onClick={handleItemClick}>
-                                {product.title}
-                            </a>
+                        <li
+                            key={product.id}
+                            className={styles.dropdownItem}
+                            onClick={() => handleItemClick(product)}
+                        >
+                            {product.title}
                         </li>
                     ))}
                 </ul>
             )}
         </div>
-    )
+    );
 }
