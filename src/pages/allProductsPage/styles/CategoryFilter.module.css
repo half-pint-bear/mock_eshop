@@ -70,7 +70,7 @@
 .applyButton {
     margin-top: 1rem;
     padding: 0.6rem 1.2rem;
-    background-color: #3b82f6;
+    background-color: #ca1515;
     color: white;
     font-weight: 500;
     font-size: 0.95rem;
@@ -80,7 +80,7 @@
     transition: background-color 0.2s ease;
 }
 .applyButton:hover {
-    background-color: #2563eb;
+    background-color: forestgreen;
 }
 
 /* Responsive */

@@ -4,6 +4,7 @@ import styles from "../styles/TopProductCarousel.module.css";
 import btnStyles from '../../../shared/components/buttons/Button.module.css'
 import Button from "../../../shared/components/buttons/Button.jsx";
 import StarRating from "../../../shared/components/stars/StarRating.jsx";
+import PriceWrapper from "../../../shared/components/price/PriceWrapper.jsx";
 
 export default function TopProductCarousel({ products = [] }) {
     // Embedded Embla hook
@@ -27,7 +28,11 @@ export default function TopProductCarousel({ products = [] }) {
                                 <img src={product.thumbnail} alt={product.title} />
                                 <h3>{product.title}</h3>
                                 <StarRating rating={product.rating} />
-                                <p>{product.price} €</p>
+                                {product.discountPercentage ? (
+                                    <PriceWrapper product={product} /> )
+                                     : (
+                                    <p className={styles.finalPrice}>{product.price} €</p>
+                                )}
                                 <Button className={btnStyles.detailsBtn} to={`/products/${product.id}`}>Détails</Button>
                             </div>
                         </div>

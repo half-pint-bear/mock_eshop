@@ -37,12 +37,39 @@
     gap: 1rem;
 }
 
+.pagination button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #e0e0e0;
+    color: #333;
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #d0d0d0;
+    transform: scale(1.05);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .activePage {
-    background-color: #007bff;
-    color: white;
+    background-color: #ca1515 !important;
+    color: white !important;
     font-weight: bold;
-    border-radius: 4px;
-    padding: 0.25rem 0.5rem;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #ca1515;
+    transform: scale(1.1);
 }
 
 .mobileOnly {
@@ -53,17 +80,18 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background-color: #f0f0f0;
+    background-color: #ca1515;
     border: 1px solid #ccc;
     border-radius: 6px;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    color: whitesmoke;
 }
 
 .filterButton:hover {
-    background-color: #e0e0e0;
+    background-color: forestgreen;
 }
 
 .filterButton svg {

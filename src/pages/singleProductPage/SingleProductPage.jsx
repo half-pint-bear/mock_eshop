@@ -8,6 +8,7 @@ import StarRating from "../../shared/components/stars/StarRating.jsx";
 import Button from "../../shared/components/buttons/Button.jsx";
 import { useCart } from "../../contexts/CartContext.jsx";
 import ProductDetails from "./components/ProductDetails.jsx";
+import PriceWrapper from "../../shared/components/price/PriceWrapper.jsx";
 
 export default function SingleProductPage() {
     const { id } = useParams();
@@ -86,7 +87,11 @@ export default function SingleProductPage() {
                             <StarRating align="left" rating={product.rating} />
                             ({product.reviews?.length ?? 0} reviews)
                         </div>
-                        <p className={styles.price}>${product.price}</p>
+                        {product.discountPercentage ? (
+                            <PriceWrapper align="left" product={product} />
+                        ) :
+                            <p className={styles.price}>${product.price}</p>
+                        }
                     </div>
                     <p className={styles.description}>{product.description}</p>
                     <div className={styles.cartActions}>

@@ -23,15 +23,24 @@
     padding: 0.5rem;
     color: black;
     width: 100%;
-    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.3rem
 }
 
 .categoryTitle {
-    margin-left: 1rem;
+    margin: 0 0 0.3rem 1rem;
 }
 
 .categoryCard:first-child {
-    align-items: stretch;
+    align-items: center;
+}
+
+.categoryCard:first-child .categoryContent {
+    justify-content: center;
+    height: 100%;
 }
 
 .categoryCard:first-child .categoryTitle {
@@ -63,9 +72,12 @@
     }
 
     .categoryImage {
-        object-fit: revert;
+        object-fit: cover;
     }
 
+    .categoryCard:first-child .categoryImage {
+        object-position: right top;
+    }
     .categoryCard:first-child .categoryTitle {
         font-size: 2rem;
     }

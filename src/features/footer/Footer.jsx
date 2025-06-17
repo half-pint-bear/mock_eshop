@@ -13,20 +13,20 @@ export default function Footer() {
             <div className={styles.column}>
                 <h3>Liens rapides</h3>
                 <ul>
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/products">Produits</a></li>
-                    <li><a href="/about">À propos</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a className={styles.anchor} href="/">Accueil</a></li>
+                    <li><a className={styles.anchor} href="/products">Produits</a></li>
+                    <li><a className={styles.anchor} href="/about">À propos</a></li>
+                    <li><a className={styles.anchor} href="/contact">Contact</a></li>
                 </ul>
             </div>
 
             <div className={styles.column}>
                 <h3>Mon compte</h3>
                 <ul>
-                    <li><a href="/account">Mon compte</a></li>
-                    <li><a href="/orders">Mes commandes</a></li>
-                    <li><a href="/cart">Mon panier</a></li>
-                    <li><a href="/login">Connexion</a></li>
+                    <li><a className={styles.anchor} href="/account">Mon compte</a></li>
+                    <li><a className={styles.anchor} href="/orders">Mes commandes</a></li>
+                    <li><a className={styles.anchor} href="/cart">Mon panier</a></li>
+                    <li><a className={styles.anchor} href="/login">Connexion</a></li>
                 </ul>
             </div>
 

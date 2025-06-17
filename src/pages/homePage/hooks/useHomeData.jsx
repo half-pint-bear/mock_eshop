@@ -68,7 +68,7 @@ export default function useHomeData() {
      * @returns {Promise<products[]>}
      */
     async function getTopProducts() {
-        const targetedCats = ["mens-watches", "womens-watches", "smartphones"];
+        const targetedCats = ["mens-watches", "womens-watches", "smartphones", "laptops", "vehicle" ];
 
         // Loading categories
         const responses = await Promise.all(
@@ -83,7 +83,7 @@ export default function useHomeData() {
             const reviews = product.reviews || [];
             if (reviews.length === 0) return false;
 
-            const avg =
+            let avg =
                 reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
 
             return avg >= 4.5;

@@ -2,6 +2,7 @@ import styles from "../styles/ProductCard.module.css";
 import StarRating from "../../../shared/components/stars/StarRating.jsx";
 import Button from "../../../shared/components/buttons/Button.jsx";
 import btnStyles from "../../../shared/components/buttons/Button.module.css";
+import PriceWrapper from "../../../shared/components/price/PriceWrapper.jsx";
 
 export default function ProductCard({ product }) {
     return (
@@ -13,7 +14,11 @@ export default function ProductCard({ product }) {
             />
             <h4 className={styles.title}>{product.title}</h4>
             <StarRating rating={product.rating} />
+            {product.discountPercentage ? (
+                <PriceWrapper product={product} />
+            ) :
             <p className={styles.price}>{product.price} €</p>
+            }
             <Button className={btnStyles.showMoreBtn} to={`/products/${product.id}`} >Découvrir</Button>
         </div>
     );

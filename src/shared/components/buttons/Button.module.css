@@ -25,12 +25,10 @@
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
+    color: white;
 }
 
 .showMoreBtn, .detailsBtn {
     cursor: pointer;
 }
-@media screen and (min-width: 1024px) {
-    .detailsBtn {
-        font-size: 2rem;}
-}
+

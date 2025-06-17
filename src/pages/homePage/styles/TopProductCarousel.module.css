@@ -64,6 +64,32 @@
     right: 1rem;
 }
 
+.priceWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.originalPrice {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.discount {
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.finalPrice {
+    color: #222;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
 /* Tablet - 2 slides */
 @media (max-width: 1024px) {
     .embla__slide {

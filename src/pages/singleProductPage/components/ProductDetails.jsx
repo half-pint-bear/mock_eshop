@@ -15,7 +15,7 @@ export default function ProductDetails({ reviews = [], product }) {
                     {reviews.map((r, i) => (
                         <li key={i} className={styles.reviewItem}>
                             <strong>Rating : {r.rating} / 5 </strong>
-                            <StarRating aling="left" rating={r.rating} />
+                            <StarRating align="left" rating={r.rating} />
                             <strong>{r.reviewerName || "Utilisateur"}</strong>
                             <p>{r.comment}</p>
                             <p>Sent on {r.date}</p>

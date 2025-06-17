@@ -3,7 +3,11 @@ import styles from "./StarRating.module.css";
 
 export default function StarRating({ rating = 0, align = "center" }) {
     const maxStars = 5;
-    const alignmentClass = align === "left" ? styles.leftAlign : "";
+
+    const alignmentClass =
+        align === "left" ? styles.leftAlign :
+            align === "center" ? styles.centerAlign :
+                "";
 
     return (
         <div className={`${styles.starRating} ${alignmentClass}`}>
