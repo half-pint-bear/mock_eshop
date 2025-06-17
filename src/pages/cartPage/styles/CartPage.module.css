@@ -13,13 +13,20 @@
     font-size: 1.8rem;
 }
 
+.emptyMessage {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
 .cartList {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
     gap: 1rem;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
     border-bottom: 1px solid #ddd;
+    min-height: 80px;
 }
 
 .cartHeader {
@@ -44,8 +51,8 @@
 }
 
 .thumbnail {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -79,68 +86,75 @@
     font-size: 1.1rem;
 }
 
-.cartCell button {
-    padding: 0.4rem 0.8rem;
-    background-color: #ffdddd;
-    border: 1px solid #ffaaaa;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.cartCell button:hover {
-    background-color: #ffbbbb;
-}
-
-hr {
-    margin: 2rem 0 1rem;
+.removeBtn {
     border: none;
-    border-top: 1px solid #ccc;
-}
-
-.cartSummary {
-    text-align: right;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.cartSummary strong {
-    display: inline-block;
-    min-width: 150px;
-}
-
-.cartActions {
+    border-radius: 50%;
+    padding: 0.4rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.removeBtn:hover {
+    background-color: #d00;
+    color: white;
+}
+
+.actionsRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
 }
 
-.cartActions button {
+.continueBtn,
+.clearCartBtn {
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #eee;
+    transition: background-color 0.3s ease;
+}
+
+.continueBtn:hover,
+.clearCartBtn:hover {
+    background-color: #ddd;
+}
+
+.summaryBox {
+    background-color: #f7f9fc;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    width: 300px;
+    margin-left: auto;
+}
+
+.summaryBox p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.summaryBox button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     border: none;
     border-radius: 6px;
+    background-color: #007bff;
+    color: #fff;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.cartActions button:first-child {
-    background-color: #eee;
-    color: #333;
-}
-
-.cartActions button:first-child:hover {
-    background-color: #ddd;
-}
-
-.cartActions button:last-child {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.cartActions button:last-child:hover {
+.summaryBox button:hover {
     background-color: #0056b3;
 }
 
@@ -173,7 +187,13 @@ Responsive
         width: 100%;
     }
 
-    .cartSummary {
-        text-align: center;
+    .summaryBox {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .actionsRow {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
