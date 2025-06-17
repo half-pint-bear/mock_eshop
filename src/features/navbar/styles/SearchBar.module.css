@@ -11,10 +11,6 @@
     border-radius: 0.8rem;
 }
 
-.bar {
-    height: 40px;
-}
-
 .dropdown {
     position: absolute;
     top: 100%;

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 /* global expect, describe, test, vi */
 import { describe, it, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';

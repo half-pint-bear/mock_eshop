@@ -83,19 +83,10 @@
     background-color: forestgreen;
 }
 
-/* Responsive */
-.desktopOnly {
-    display: block;
-}
+
 @media (max-width: 768px) {
     .listContainer {
         max-height: none;
-    }
-    .desktopOnly {
-        display: none;
-    }
-    .mobileOnly {
-        display: block;
     }
 
     .applyButton {

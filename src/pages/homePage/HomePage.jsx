@@ -6,7 +6,7 @@ import Loader from "../../shared/components/loader/Loader.jsx";
 import banner from "../../assets/banner-1.jpg"
 
 export default function HomePage() {
-    const {categories, topProducts, error, loading } = useHomeData();
+    const {categories, topProducts, loading } = useHomeData();
 
     if (loading) {
         return (

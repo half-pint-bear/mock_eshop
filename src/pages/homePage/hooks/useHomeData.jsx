@@ -60,7 +60,7 @@ export default function useHomeData() {
         };
 
         fetchData();
-    }, []);
+    }, [cats]);
 
 
     /**
