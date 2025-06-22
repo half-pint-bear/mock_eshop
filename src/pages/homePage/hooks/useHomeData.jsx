@@ -60,11 +60,11 @@ export default function useHomeData() {
         };
 
         fetchData();
-    }, [cats]);
+    }, []);
 
 
     /**
-     * Retrieving most rated products of inner selected categories
+     * Retrieving most rated products of selected categories
      * @returns {Promise<products[]>}
      */
     async function getTopProducts() {
